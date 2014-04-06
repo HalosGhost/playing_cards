@@ -5,13 +5,16 @@ require "stack"
 Player = {}
 
 names = { "Sam", "Xenia", "Ian", "John", "Jack", "DeMarro",
-          "Rebecca", "Stacie", "Mike", "Aaron" }
+          "Rebecca", "Stacie", "Mike", "Aaron", "Blaine", "Britany",
+          "Joshua", "Anthony", "Xavier", "Slurms McKenzie", "Heather",
+          "Wendy" }
 
 function Player.new (name, bank, wins, losses, hand)
     local self = {}
     
-    --[[ Private Variables ]]--
     if not name then math.randomseed(os.time()) end
+
+    --[[ Private Variables ]]--
     local name = name or names[math.random(#names)]
     local bank = bank or 0
     local wins = wins or 0
@@ -40,8 +43,8 @@ function Player.new (name, bank, wins, losses, hand)
     end
 
     function self.update_record (dw, dl)
-        wins = (dw or 0) + wins
-        losses = (dl or 0) + losses
+        wins = wins + (dw or 0)
+        losses = losses + (dl or 0)
     end
 
     function self.draw (stack, count)
@@ -51,11 +54,7 @@ function Player.new (name, bank, wins, losses, hand)
     end
 
     function self.play (position)
-        if position then
-            return hand.get_cards(position)
-        else
-            return hand.get_cards()
-        end
+        return hand.get_cards(position)
     end
 
     function self.update_hand (cards)
