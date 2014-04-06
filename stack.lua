@@ -46,7 +46,7 @@ function Stack.new (size, initial_cards)
 
     -- Add a card to the stack
     function self.draw (card)
-        cards[#cards + 1] = card.get_id and card or nil
+        cards[#cards + 1] = card.get_id() and card or nil
     end
 
     -- Return a card from the stack
