@@ -3,7 +3,7 @@
 
 Card = {}
 
-Rank = { " A", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", "10", " J", " Q", " K", " ★" }
+Rank = { 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', '★' }
 Suit = { '♢', '♣', '♡', '♠' }
 
 math.randomseed(os.time())
@@ -21,7 +21,13 @@ function Card.new (rank, suit)
     end
 
     function self.get_id ()
-        return self.is_joker() and rank or (rank .. suit)
+        if self.is_joker() then
+            return "  " .. rank
+        elseif tonumber(rank) ~= nil and tonumber(rank) == 10 then
+            return rank .. suit
+        else
+            return " " .. rank .. suit
+        end
     end
 
     function self.get_rank ()
