@@ -15,7 +15,7 @@ function _init ()
 end
 
 function deal ()
-    for i = 1, #stack.get_cards(), 3 do
+    for i = 1, stack.get_size(), 3 do
         print("+---+\t+---+\t+---+")
         print("|"    .. stack.get_cards(i).get_id()   .. 
               "|\t|" .. stack.get_cards(i+1).get_id() .. 
